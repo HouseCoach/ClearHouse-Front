@@ -30,7 +30,7 @@ const SPLASH_SCREEN_CONTENT = [
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
-export default function SplashScreen() {
+export default function SplashScreen({ navigation }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const scrollRef = useRef(null);
@@ -103,7 +103,7 @@ export default function SplashScreen() {
         </View>
       </View>
       <View style={styles.buttonStyle}>
-        <Button title="시작하기" onPress={() => console.log('btn')} />
+        <Button title="시작하기" onPress={() => navigation.navigate('Login')} />
       </View>
     </View>
   );
