@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "HouseCoach",
+    "assetBundlePatterns": ["assets/*"],
     "slug": "HouseCoach",
     "version": "1.0.0",
     "orientation": "portrait",
