@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 2,
     backgroundColor: 'rgba(250,250,255,1)',
+    elevation: 2,
   },
   loginButtonStyle: {
     width: '100%',
