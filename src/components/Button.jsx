@@ -1,13 +1,10 @@
 import { View, Pressable, Text, StyleSheet } from 'react-native';
 
-export default function Button() {
+export default function Button({ title, onPress }) {
   return (
     <View style={styles.btnContainerStyle}>
-      <Pressable
-        onPress={() => console.log('btn pressed')}
-        style={styles.btnStyle}
-      >
-        <Text style={styles.btnTextStyle}>시작하기</Text>
+      <Pressable onPress={onPress} style={styles.btnStyle}>
+        <Text style={styles.btnTextStyle}>{title}</Text>
       </Pressable>
     </View>
   );
