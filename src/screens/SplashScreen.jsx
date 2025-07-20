@@ -112,7 +112,7 @@ export default function SplashScreen({ navigation }) {
 const styles = StyleSheet.create({
   splashContainerStyle: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: 'rgba(250,250,255,1)',
   },
   splashContainer: {
     flex: 8,
