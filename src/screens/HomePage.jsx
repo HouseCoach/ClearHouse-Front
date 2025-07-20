@@ -1,0 +1,349 @@
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Pressable,
+  ScrollView,
+  Dimensions,
+  Platform,
+} from 'react-native';
+import { useState } from 'react';
+import MainLayout from '../components/layout/MainLayout';
+
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
+
+const HOME_GRID = [
+  {
+    title: '원/투룸',
+    icon: require('../../assets/home/home-icon1.png'),
+  },
+  {
+    title: '오피스텔',
+    icon: require('../../assets/home/home-icon2.png'),
+  },
+  {
+    title: '아파트',
+    icon: require('../../assets/home/home-icon3.png'),
+  },
+  {
+    title: '주택/빌라',
+    icon: require('../../assets/home/home-icon4.png'),
+  },
+];
+
+const POPULAR_HOUSE = [
+  {
+    id: 1,
+    picture: require('../../assets/home/popular-house1.png'),
+    title: 'ㅇㅇㅇ',
+    description: 'ㄹㄹㄹ',
+  },
+  {
+    id: 2,
+    picture: require('../../assets/home/popular-house2.png'),
+    title: 'ㅇㅇㅇ',
+    description: 'ㄹㄹㄹ',
+    status: false,
+  },
+  {
+    id: 3,
+    picture: require('../../assets/home/popular-house1.png'),
+    title: 'ㅇㅇㅇ',
+    description: 'ㄹㄹㄹ',
+    status: false,
+  },
+  {
+    id: 4,
+    picture: require('../../assets/home/popular-house2.png'),
+    title: 'ㅇㅇㅇ',
+    description: 'ㄹㄹㄹ',
+    status: false,
+  },
+];
+
+export default function HomePage({ navigation }) {
+  const [liked, setLiked] = useState([]);
+
+  const pushHeart = (id) => {
+    setLiked((prev) =>
+      prev.includes(id) ? prev.filter((itemId) => itemId !== id) : [...prev, id]
+    );
+  };
+
+  return (
+    <MainLayout>
+      <View style={styles.homeContainer}>
+        <View style={styles.homeNavBar}>
+          <View style={styles.homeLogoWrpper}>
+            <Image
+              source={require('../../assets/house-coach-logo.png')}
+              style={styles.logoStyle}
+              resizeMode="contain"
+            />
+            <Text style={styles.logoTitleStyle}>투명한 집터</Text>
+          </View>
+          <Pressable onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../assets/home/profile.png')}
+              style={styles.profileIconStyle}
+              resizeMode="contain"
+            />
+          </Pressable>
+        </View>
+        <View style={styles.homeGridContainer}>
+          {HOME_GRID.map((item, idx) => (
+            <View style={styles.homeGridDetailStyle} key={idx}>
+              <Text style={styles.homeGridTitleStyle}>{item.title}</Text>
+              <Image
+                source={item.icon}
+                resizeMode="contain"
+                style={styles.homeGridIconStyle}
+              />
+            </View>
+          ))}
+          <View style={[styles.seeAnotherBtnWrapper, styles.shadowBox]}>
+            <Text style={styles.btnTitleStyle}>다른 조건으로 검색하기</Text>
+            <Image
+              source={require('../../assets/home/search-icon.png')}
+              resizeMode="contain"
+              style={styles.searchIcon}
+            />
+          </View>
+        </View>
+        <View style={styles.popularHouseWrapper}>
+          <View style={styles.popularHouseTitleWrapper}>
+            <Text style={styles.popularHouseTitle}>인기 매물</Text>
+            <Pressable style={styles.seeMoreBtnWraper}>
+              <Text style={styles.seeMoreBtn}>더보기 {'>'}</Text>
+            </Pressable>
+          </View>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.houseWrapper}
+          >
+            {POPULAR_HOUSE.map((item) => {
+              const isLiked = liked.includes(item.id);
+              return (
+                <Pressable
+                  key={item.id}
+                  style={[
+                    styles.cardShadow,
+                    {
+                      width: SCREEN_WIDTH * 0.38,
+                    },
+                  ]}
+                >
+                  <View style={styles.cardContainer}>
+                    <Image source={item.picture} style={styles.housePicture} />
+                    <Pressable
+                      onPress={() => pushHeart(item.id)}
+                      hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                      style={styles.circleStyle}
+                    >
+                      <Image
+                        source={
+                          isLiked
+                            ? require('../../assets/home/full-heart-icon.png')
+                            : require('../../assets/home/empty-heart-icon.png')
+                        }
+                        style={styles.hearIcon}
+                        resizeMode="contain"
+                      />
+                    </Pressable>
+                    <View style={styles.titleAndDescription}>
+                      <Text style={styles.houseTitle}>{item.title}</Text>
+                      <Text style={styles.houseDescription}>
+                        {item.description}
+                      </Text>
+                    </View>
+                  </View>
+                </Pressable>
+              );
+            })}
+          </ScrollView>
+        </View>
+      </View>
+    </MainLayout>
+  );
+}
+const styles = StyleSheet.create({
+  homeContainer: {
+    flex: 1,
+    backgroundColor: '#FAFAFF',
+    paddingTop: 38,
+  },
+  homeNavBar: {
+    flex: 1.2,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  homeLogoWrpper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 7,
+  },
+  logoStyle: {
+    width: 50,
+    height: 50,
+  },
+  logoTitleStyle: {
+    color: '#1229A4',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  profileIconStyle: {
+    width: 25,
+    height: 25,
+  },
+  homeGridContainer: {
+    flex: 4,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    flexWrap: 'wrap',
+    gap: 12,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    paddingHorizontal: 24,
+  },
+  homeGridDetailStyle: {
+    backgroundColor: 'white',
+    width: '48%',
+    height: '30%',
+    borderRadius: 5,
+    padding: 18,
+    elevation: 2,
+  },
+  homeGridTitleStyle: {
+    fontSize: 17,
+    color: '#1229A4',
+    fontWeight: '600',
+  },
+  homeGridIconStyle: {
+    position: 'absolute',
+    right: 10,
+    bottom: 10,
+    width: 50,
+    height: 50,
+  },
+  seeAnotherBtnWrapper: {
+    backgroundColor: 'white',
+    width: '100%',
+    height: '15%',
+    backgroundColor: 'white',
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 6,
+  },
+  shadowBox: Platform.select({
+    ios: {
+      shadowColor: '#cfcfcf',
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 2,
+    },
+    android: {
+      elevation: 2,
+    },
+  }),
+  btnTitleStyle: {
+    fontSize: 17,
+    color: '#1229A4',
+    fontWeight: '600',
+  },
+  searchIcon: {
+    width: 15,
+    height: 15,
+  },
+  popularHouseWrapper: {
+    flex: 4.5,
+    paddingLeft: 24,
+  },
+  popularHouseTitleWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+  },
+  popularHouseTitle: {
+    fontSize: 22,
+    color: '#1229A4',
+    fontWeight: 'bold',
+  },
+  seeMoreBtnWraper: {
+    width: '15%',
+    alignItems: 'flex-end',
+    paddingRight: 13,
+  },
+  seeMoreBtn: {
+    fontSize: 12,
+    color: '#767676',
+  },
+  houseWrapper: {
+    flexGrow: 1,
+    height: '55%',
+    marginTop: '12',
+    gap: 12,
+  },
+  cardShadow: {
+    borderRadius: 12,
+    backgroundColor: 'white',
+    ...Platform.select({
+      ios: {
+        shadowColor: '#888888',
+        shadowOffset: { width: 7, height: 7 },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+      },
+      android: {
+        elevation: 2,
+      },
+    }),
+  },
+  cardContainer: {
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+
+  housePicture: {
+    width: '100%',
+    height: '55%',
+  },
+  circleStyle: {
+    position: 'absolute',
+    right: 7,
+    bottom: 100,
+    width: 33,
+    height: 33,
+    borderRadius: '50%',
+    backgroundColor: '#ffffffc8',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 10,
+  },
+  titleAndDescription: {
+    height: '45%',
+    backgroundColor: 'white',
+    padding: 12,
+    gap: 1,
+  },
+  hearIcon: {
+    width: 18,
+    height: 18,
+  },
+  houseTitle: {
+    fontSize: 13,
+    fontWeight: 'bold',
+  },
+  houseDescription: {
+    fontSize: 13,
+    color: '#767676',
+  },
+});
