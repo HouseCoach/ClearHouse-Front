@@ -9,6 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { useState } from 'react';
+import { Shadow } from 'react-native-shadow-2';
 import MainLayout from '../components/layout/MainLayout';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -102,14 +103,14 @@ export default function HomePage({ navigation }) {
               />
             </View>
           ))}
-          <View style={[styles.seeAnotherBtnWrapper, styles.shadowBox]}>
+          <Pressable style={[styles.seeAnotherBtnWrapper, styles.shadowBox]}>
             <Text style={styles.btnTitleStyle}>다른 조건으로 검색하기</Text>
             <Image
               source={require('../../assets/home/search-icon.png')}
               resizeMode="contain"
               style={styles.searchIcon}
             />
-          </View>
+          </Pressable>
         </View>
         <View style={styles.popularHouseWrapper}>
           <View style={styles.popularHouseTitleWrapper}>
@@ -126,8 +127,13 @@ export default function HomePage({ navigation }) {
             {POPULAR_HOUSE.map((item) => {
               const isLiked = liked.includes(item.id);
               return (
-                <Pressable
+                <Shadow
                   key={item.id}
+                  distance={9}
+                  startColor={'#61616110'}
+                  finalColor={'#00000000'}
+                  offset={[4, 4]}
+                  radius={12}
                   style={[
                     styles.cardShadow,
                     {
@@ -159,7 +165,7 @@ export default function HomePage({ navigation }) {
                       </Text>
                     </View>
                   </View>
-                </Pressable>
+                </Shadow>
               );
             })}
           </ScrollView>
@@ -215,9 +221,9 @@ const styles = StyleSheet.create({
   homeGridDetailStyle: {
     backgroundColor: 'white',
     width: '48%',
-    height: '30%',
+    height: '29%',
     borderRadius: 5,
-    padding: 18,
+    padding: 13,
     elevation: 2,
   },
   homeGridTitleStyle: {
@@ -273,7 +279,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   popularHouseTitle: {
-    fontSize: 22,
+    fontSize: 20,
     color: '#1229A4',
     fontWeight: 'bold',
   },
@@ -295,17 +301,6 @@ const styles = StyleSheet.create({
   cardShadow: {
     borderRadius: 12,
     backgroundColor: 'white',
-    ...Platform.select({
-      ios: {
-        shadowColor: '#888888',
-        shadowOffset: { width: 7, height: 7 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3,
-      },
-      android: {
-        elevation: 2,
-      },
-    }),
   },
   cardContainer: {
     borderRadius: 12,
