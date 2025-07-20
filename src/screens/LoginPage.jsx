@@ -4,17 +4,20 @@ const SOCIAL_LOGIN_BTN = [
   {
     icon: require('../../assets/Login/google-logo.png'),
     title: '구글로 로그인하기',
+    link: 'Home',
   },
   {
     icon: require('../../assets/Login/kakao-logo.png'),
     title: '카카오로 로그인하기',
+    link: 'Home',
   },
   {
     icon: require('../../assets/Login/naver-logo.png'),
     title: '네이버로 로그인하기',
+    link: 'Home',
   },
 ];
-export default function Login({ navigation }) {
+export default function LoginPage({ navigation }) {
   return (
     <View style={styles.loginContainer}>
       <Pressable
@@ -39,7 +42,7 @@ export default function Login({ navigation }) {
           <View key={idx} style={styles.loginButtonWrapper}>
             <Pressable
               style={styles.loginButtonStyle}
-              onPress={() => console.log('click')}
+              onPress={() => navigation.navigate(item.link)}
             >
               <Image
                 source={item.icon}
