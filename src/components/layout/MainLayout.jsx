@@ -1,5 +1,7 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import BottomBar from './BottomBar';
+
+const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function MainLayout({ children }) {
   return (
@@ -15,6 +17,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   LayoutMainContainer: {
-    flex: 1,
+    flex: SCREEN_HEIGHT * 0.88,
   },
 });

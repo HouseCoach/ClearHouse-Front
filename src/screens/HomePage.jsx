@@ -37,29 +37,44 @@ const POPULAR_HOUSE = [
   {
     id: 1,
     picture: require('../../assets/home/popular-house1.png'),
-    title: 'ㅇㅇㅇ',
-    description: 'ㄹㄹㄹ',
+    title: '월세 2000/60',
+    description: '4층 24.5m^2\n마포구 연남동',
   },
   {
     id: 2,
     picture: require('../../assets/home/popular-house2.png'),
-    title: 'ㅇㅇㅇ',
-    description: 'ㄹㄹㄹ',
+    title: '월세 2000/60',
+    description: '4층 24.5m^2\n마포구 연남동',
     status: false,
   },
   {
     id: 3,
     picture: require('../../assets/home/popular-house1.png'),
-    title: 'ㅇㅇㅇ',
-    description: 'ㄹㄹㄹ',
+    title: '월세 2000/60',
+    description: '4층 24.5m^2\n마포구 연남동',
     status: false,
   },
   {
     id: 4,
     picture: require('../../assets/home/popular-house2.png'),
-    title: 'ㅇㅇㅇ',
-    description: 'ㄹㄹㄹ',
+    title: '월세 2000/60',
+    description: '4층 24.5m^2\n마포구 연남동',
     status: false,
+  },
+];
+
+const MATCHING_HOUSE = [
+  {
+    title: '여성 안심',
+    icon: require('../../assets/home/women-icon.png'),
+  },
+  {
+    title: '노인 중심',
+    icon: require('../../assets/home/grand-icon.png'),
+  },
+  {
+    title: '휠체어 이용',
+    icon: require('../../assets/home/bathchair-icon.png'),
   },
 ];
 
@@ -114,7 +129,7 @@ export default function HomePage({ navigation }) {
         </View>
         <View style={styles.popularHouseWrapper}>
           <View style={styles.popularHouseTitleWrapper}>
-            <Text style={styles.popularHouseTitle}>인기 매물</Text>
+            <Text style={styles.popularHouseTitle}>검증 매물 추천</Text>
             <Pressable style={styles.seeMoreBtnWraper}>
               <Text style={styles.seeMoreBtn}>더보기 {'>'}</Text>
             </Pressable>
@@ -170,6 +185,27 @@ export default function HomePage({ navigation }) {
             })}
           </ScrollView>
         </View>
+        <View style={styles.matchingHouseWrapper}>
+          <View style={styles.popularHouseTitleWrapper}>
+            <Text style={styles.popularHouseTitle}>맞춤 매물 보기</Text>
+            <Pressable style={styles.seeMoreBtnWraper}>
+              <Text style={styles.seeMoreBtn}>더보기 {'>'}</Text>
+            </Pressable>
+          </View>
+          <View style={styles.containerWrapper}>
+            {MATCHING_HOUSE.map((item) => (
+              <View style={styles.matchingHouseContainer} key={item.title}>
+                <Text style={styles.matchingHouseTitleContainer}>
+                  {item.title}
+                </Text>
+                <Image
+                  source={item.icon}
+                  style={styles.matchingHouseiconStyle}
+                />
+              </View>
+            ))}
+          </View>
+        </View>
       </View>
     </MainLayout>
   );
@@ -198,7 +234,7 @@ const styles = StyleSheet.create({
   },
   logoTitleStyle: {
     color: '#1229A4',
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: 'bold',
   },
   profileIconStyle: {
@@ -221,7 +257,7 @@ const styles = StyleSheet.create({
   homeGridDetailStyle: {
     backgroundColor: 'white',
     width: '48%',
-    height: '29%',
+    height: '35%',
     borderRadius: 5,
     padding: 13,
     elevation: 2,
@@ -241,7 +277,7 @@ const styles = StyleSheet.create({
   seeAnotherBtnWrapper: {
     backgroundColor: 'white',
     width: '100%',
-    height: '15%',
+    height: '17%',
     backgroundColor: 'white',
     borderRadius: 5,
     justifyContent: 'center',
@@ -270,8 +306,14 @@ const styles = StyleSheet.create({
     height: 15,
   },
   popularHouseWrapper: {
-    flex: 4.5,
+    flex: 4,
     paddingLeft: 24,
+    paddingTop: 15,
+  },
+  matchingHouseWrapper: {
+    flex: 2.5,
+    paddingLeft: 24,
+    gap: 10,
   },
   popularHouseTitleWrapper: {
     flexDirection: 'row',
@@ -279,7 +321,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   popularHouseTitle: {
-    fontSize: 20,
+    fontSize: 21,
     color: '#1229A4',
     fontWeight: 'bold',
   },
@@ -294,7 +336,7 @@ const styles = StyleSheet.create({
   },
   houseWrapper: {
     flexGrow: 1,
-    height: '55%',
+    height: '80%',
     marginTop: '12',
     gap: 12,
   },
@@ -327,18 +369,45 @@ const styles = StyleSheet.create({
     height: '45%',
     backgroundColor: 'white',
     padding: 12,
-    gap: 1,
+    gap: 7,
   },
   hearIcon: {
     width: 18,
     height: 18,
   },
   houseTitle: {
-    fontSize: 13,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: 'regular',
   },
   houseDescription: {
     fontSize: 13,
     color: '#767676',
+  },
+  containerWrapper: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  matchingHouseContainer: {
+    width: '30%',
+    height: '180%',
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 3,
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.05,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  matchingHouseTitleContainer: {
+    fontSize: 15,
+    color: '#1229A4',
+  },
+  matchingHouseiconStyle: {
+    width: 10,
+    height: 20,
   },
 });
