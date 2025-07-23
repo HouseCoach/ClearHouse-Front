@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   },
   logoTitleStyle: {
     color: '#1229A4',
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: 'bold',
   },
   profileIconStyle: {
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   popularHouseTitle: {
-    fontSize: 20,
+    fontSize: 21,
     color: '#1229A4',
     fontWeight: 'bold',
   },
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   matchingHouseTitleContainer: {
-    fontSize: 14,
+    fontSize: 15,
     color: '#1229A4',
   },
   matchingHouseiconStyle: {
