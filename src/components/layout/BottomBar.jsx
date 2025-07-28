@@ -1,38 +1,53 @@
 import { StyleSheet, View, Image, Pressable, Dimensions } from 'react-native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const BAR_ICON = [
   {
     icon: require('../../../assets/Bar/home-icon.png'),
-    link: '',
+    selectedIcon: require('../../../assets/Bar/selected-home-icon.png'),
+    link: 'Home',
   },
   {
     icon: require('../../../assets/Bar/map-icon.png'),
-    link: '',
+    selectedIcon: require('../../../assets/Bar/map-icon.png'),
+    link: 'Map',
   },
   {
-    icon: require('../../../assets/Bar/hear-icon.png'),
-    link: '',
+    icon: require('../../../assets/Bar/chat-icon.png'),
+    selectedIcon: require('../../../assets/Bar/chat-icon.png'),
+    link: 'Chat',
   },
   {
     icon: require('../../../assets/home/profile.png'),
-    link: '',
+    selectedIcon: require('../../../assets/Bar/selected-person-icon.png'),
+    link: 'MyPageTab',
   },
 ];
 
 const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 
 export default function BottomBar() {
+  const navigation = useNavigation();
+  const route = useRoute();
   return (
     <View style={styles.bottomBarContainer}>
-      {BAR_ICON.map((item, idx) => (
-        <Pressable
-          style={styles.iconWrapperStyle}
-          key={idx}
-          onPress={() => console.log('press')}
-        >
-          <Image source={item.icon} style={styles.iconStyle} />
-        </Pressable>
-      ))}
+      {BAR_ICON.map((item, idx) => {
+        const isActive = route.name === item.link;
+        return (
+          <Pressable
+            style={styles.iconWrapperStyle}
+            key={idx}
+            onPress={() => {
+              navigation.navigate(item.link);
+            }}
+          >
+            <Image
+              source={isActive ? item.selectedIcon : item.icon}
+              style={styles.iconStyle}
+            />
+          </Pressable>
+        );
+      })}
     </View>
   );
 }
@@ -54,8 +69,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   iconStyle: {
-    width: 24,
-    height: 24,
+    width: 25,
+    height: 25,
     marginTop: 23,
   },
 });
