@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import BottomBar from './BottomBar';
 
 export default function MainLayout({ children }) {
