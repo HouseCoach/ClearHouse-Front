@@ -1,17 +1,18 @@
 import { StyleSheet, View, Text, Image, Pressable } from 'react-native';
-import TopBottomLayout from '../components/layout/TopBottomLayout';
+import TopBottomLayout from '../../components/layout/TopBottomLayout';
+import { useNavigation } from '@react-navigation/native';
 
 const MY_PAGE_MAIN_FEATURE = [
   {
-    icon: require('../../assets/MyPage/heart-icon.png'),
+    icon: require('../../../assets/MyPage/heart-icon.png'),
     title: '찜한 방',
   },
   {
-    icon: require('../../assets/MyPage/inquiry-icon.png'),
+    icon: require('../../../assets/MyPage/inquiry-icon.png'),
     title: '문의한 방',
   },
   {
-    icon: require('../../assets/MyPage/review-icon.png'),
+    icon: require('../../../assets/MyPage/review-icon.png'),
     title: '내가 쓴 리뷰',
   },
 ];
@@ -31,16 +32,20 @@ const MY_PAGE_SUB_FEATURE = [
   },
 ];
 export default function MyPage() {
+  const navigation = useNavigation();
   return (
     <TopBottomLayout
       style={styles.myPageWrapper}
       barTitle="마이페이지"
-      imgSource={require('../../assets/MyPage/alarm-icon.png')}
+      imgSource={require('../../../assets/MyPage/alarm-icon.png')}
     >
       <View style={styles.profileWrapper}>
-        <Pressable style={styles.profileDetailWrapper}>
+        <Pressable
+          style={styles.profileDetailWrapper}
+          onPress={() => navigation.navigate('MyInfo')}
+        >
           <Image
-            source={require('../../assets/MyPage/profile-icon.png')}
+            source={require('../../../assets/MyPage/profile-icon.png')}
             resizeMode="contain"
             style={styles.profileIconStyle}
           />
@@ -64,7 +69,7 @@ export default function MyPage() {
           <Pressable key={item.title} style={styles.subFeatureDetailWrapper}>
             <Text style={styles.subFeatureDeatailTitle}>{item.title}</Text>
             <Image
-              source={require('../../assets/MyPage/go-icon.png')}
+              source={require('../../../assets/MyPage/go-icon.png')}
               style={styles.goIconStyle}
               resizeMode="contain"
             />

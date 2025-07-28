@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SplashScreen from '../screens/SplashScreen';
 import LoginScreen from './Login';
-import MainLayout from '../components/layout/MainLayout';
+import MyInfoPage from '../screens/MyPage/MyInfoPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +19,7 @@ export default function RootNavigator() {
       >
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="MyInfo" component={MyInfoPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
