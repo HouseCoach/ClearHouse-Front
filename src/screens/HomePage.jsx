@@ -201,6 +201,7 @@ export default function HomePage({ navigation }) {
                 <Image
                   source={item.icon}
                   style={styles.matchingHouseiconStyle}
+                  resizeMode="contain"
                 />
               </View>
             ))}
@@ -311,7 +312,7 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   matchingHouseWrapper: {
-    flex: 2.5,
+    flex: 1,
     paddingLeft: 24,
     gap: 10,
   },
@@ -389,7 +390,7 @@ const styles = StyleSheet.create({
   },
   matchingHouseContainer: {
     width: '30%',
-    height: '180%',
+    height: 35,
     backgroundColor: 'white',
     flexDirection: 'row',
     justifyContent: 'center',
@@ -407,7 +408,8 @@ const styles = StyleSheet.create({
     color: '#1229A4',
   },
   matchingHouseiconStyle: {
-    width: 10,
-    height: 20,
+    width: 17,
+    aspectRatio: 1,
+    height: 17,
   },
 });
