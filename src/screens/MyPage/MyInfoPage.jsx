@@ -8,12 +8,14 @@ import {
 } from 'react-native';
 import TopLayout from '../../components/layout/TopLayout';
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function MyInfoPage() {
   const [nickNameInput, setnickNameInput] = useState('');
   const [emailInput, setEmailInput] = useState('');
   const [phoneNumberInput, setPhoneNumberInput] = useState('');
   const [focusInput, setFocusInput] = useState('');
+  const navigation = useNavigation();
 
   return (
     <TopLayout barTitle="나의 정보 설정">
@@ -84,7 +86,10 @@ export default function MyInfoPage() {
         <Pressable style={styles.logoutBtn}>
           <Text style={styles.logoutBtnText}>로그아웃</Text>
         </Pressable>
-        <Pressable style={styles.completeBtn}>
+        <Pressable
+          style={styles.completeBtn}
+          onPress={() => navigation.goBack()}
+        >
           <Text style={styles.completeBtnText}>입력완료</Text>
         </Pressable>
       </View>
@@ -94,7 +99,7 @@ export default function MyInfoPage() {
 
 const styles = StyleSheet.create({
   profileIconStyle: {
-    flex: 3.7,
+    flex: 2.8,
     alignItems: 'center',
     paddingTop: '10%',
   },
@@ -103,7 +108,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   socialAccountWrapper: {
-    flex: 1,
+    flex: 1.4,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -118,13 +123,13 @@ const styles = StyleSheet.create({
   },
   textInputWrapper: {
     flex: 7,
-    paddingHorizontal: '10%',
+    paddingHorizontal: '7%',
     gap: '5%',
     justifyContent: 'center',
   },
   myInfoInputStyle: {
     width: '100%',
-    height: '16%',
+    height: '17%',
     color: '#1A1A1A',
     fontSize: 14,
     backgroundColor: '#EAECFF',
@@ -135,16 +140,16 @@ const styles = StyleSheet.create({
     borderColor: 'transparent',
   },
   myInfoBtnStyle: {
-    flex: 2.2,
+    flex: 2,
     flexDirection: 'row',
     paddingHorizontal: '7%',
     gap: '5%',
-    paddingTop: '2%',
+    paddingTop: '4%',
   },
   logoutBtn: {
     flex: 1,
     backgroundColor: '#EAECFF',
-    height: '60%',
+    height: '62%',
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
@@ -160,7 +165,7 @@ const styles = StyleSheet.create({
   completeBtn: {
     flex: 1,
     backgroundColor: '#1229A4',
-    height: '60%',
+    height: '62%',
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
