@@ -6,14 +6,17 @@ const MY_PAGE_MAIN_FEATURE = [
   {
     icon: require('../../../assets/MyPage/heart-icon.png'),
     title: '찜한 방',
+    link: 'FavoriteHouseList',
   },
   {
     icon: require('../../../assets/MyPage/inquiry-icon.png'),
     title: '문의한 방',
+    link: '',
   },
   {
     icon: require('../../../assets/MyPage/review-icon.png'),
     title: '내가 쓴 리뷰',
+    link: '',
   },
 ];
 
@@ -54,14 +57,18 @@ export default function MyPage() {
       </View>
       <View style={styles.mainFeatureWrapper}>
         {MY_PAGE_MAIN_FEATURE.map((item) => (
-          <View style={styles.mainFeatureIconWrapper} key={item.title}>
+          <Pressable
+            style={styles.mainFeatureIconWrapper}
+            key={item.title}
+            onPress={() => navigation.navigate(item.link)}
+          >
             <Image
               source={item.icon}
               resizeMode="contain"
               style={styles.featureIconStyle}
             />
             <Text style={styles.featureIconTitleStyle}>{item.title}</Text>
-          </View>
+          </Pressable>
         ))}
       </View>
       <View style={styles.subFeatureWrapper}>
