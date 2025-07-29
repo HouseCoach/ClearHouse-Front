@@ -1,26 +1,26 @@
 import { StyleSheet, View, Image, Pressable, Dimensions } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, TabActions } from '@react-navigation/native';
 
 const BAR_ICON = [
   {
     icon: require('../../../assets/Bar/home-icon.png'),
     selectedIcon: require('../../../assets/Bar/selected-home-icon.png'),
-    link: 'Home',
+    link: ['Home'],
   },
   {
     icon: require('../../../assets/Bar/map-icon.png'),
     selectedIcon: require('../../../assets/Bar/map-icon.png'),
-    link: 'Map',
+    link: ['Map'],
   },
   {
     icon: require('../../../assets/Bar/chat-icon.png'),
     selectedIcon: require('../../../assets/Bar/chat-icon.png'),
-    link: 'Chat',
+    link: ['Chat'],
   },
   {
     icon: require('../../../assets/home/profile.png'),
     selectedIcon: require('../../../assets/Bar/selected-person-icon.png'),
-    link: 'MyPageTab',
+    link: ['MyPageTab', 'FavoriteHouseList'],
   },
 ];
 
@@ -29,16 +29,17 @@ const { height: SCREEN_HEIGHT } = Dimensions.get('window');
 export default function BottomBar() {
   const navigation = useNavigation();
   const route = useRoute();
+
   return (
     <View style={styles.bottomBarContainer}>
       {BAR_ICON.map((item, idx) => {
-        const isActive = route.name === item.link;
+        const isActive = item.link.includes(route.name);
         return (
           <Pressable
             style={styles.iconWrapperStyle}
             key={idx}
             onPress={() => {
-              navigation.navigate(item.link);
+              navigation.navigate(item.link[0]);
             }}
           >
             <Image

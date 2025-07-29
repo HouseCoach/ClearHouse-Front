@@ -11,6 +11,7 @@ import {
 import { useState } from 'react';
 import { Shadow } from 'react-native-shadow-2';
 import MainLayout from '../components/layout/MainLayout';
+import { POPULAR_HOUSE } from '../mocks/House';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -30,36 +31,6 @@ const HOME_GRID = [
   {
     title: '주택/빌라',
     icon: require('../../assets/home/home-icon4.png'),
-  },
-];
-
-const POPULAR_HOUSE = [
-  {
-    id: 1,
-    picture: require('../../assets/home/popular-house1.png'),
-    title: '월세 2000/60',
-    description: '4층 24.5m^2\n마포구 연남동',
-  },
-  {
-    id: 2,
-    picture: require('../../assets/home/popular-house2.png'),
-    title: '월세 2000/60',
-    description: '4층 24.5m^2\n마포구 연남동',
-    status: false,
-  },
-  {
-    id: 3,
-    picture: require('../../assets/home/popular-house1.png'),
-    title: '월세 2000/60',
-    description: '4층 24.5m^2\n마포구 연남동',
-    status: false,
-  },
-  {
-    id: 4,
-    picture: require('../../assets/home/popular-house2.png'),
-    title: '월세 2000/60',
-    description: '4층 24.5m^2\n마포구 연남동',
-    status: false,
   },
 ];
 
