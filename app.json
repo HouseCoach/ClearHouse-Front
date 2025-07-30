@@ -1,7 +1,6 @@
 {
   "expo": {
     "name": "HouseCoach",
-    "assetBundlePatterns": ["assets/*"],
     "slug": "HouseCoach",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +20,20 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.HouseCoach"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "67c06a5b-18be-475e-a098-944202826524"
+      }
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"]
   }
 }

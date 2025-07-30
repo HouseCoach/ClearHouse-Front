@@ -1,26 +1,26 @@
 import { StyleSheet, View, Image, Pressable, Dimensions } from 'react-native';
-import { useNavigation, useRoute, TabActions } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 const BAR_ICON = [
   {
     icon: require('../../../assets/Bar/home-icon.png'),
     selectedIcon: require('../../../assets/Bar/selected-home-icon.png'),
-    link: ['Home'],
+    link: ['HomeMain'],
   },
   {
     icon: require('../../../assets/Bar/map-icon.png'),
     selectedIcon: require('../../../assets/Bar/map-icon.png'),
-    link: ['Map'],
+    link: ['HomeMain'],
   },
   {
     icon: require('../../../assets/Bar/chat-icon.png'),
     selectedIcon: require('../../../assets/Bar/chat-icon.png'),
-    link: ['Chat'],
+    link: ['HomeMain'],
   },
   {
     icon: require('../../../assets/home/profile.png'),
     selectedIcon: require('../../../assets/Bar/selected-person-icon.png'),
-    link: ['MyPageTab', 'FavoriteHouseList'],
+    link: ['MyPageMain', 'FavoriteHouseList', 'InquiredHouse'],
   },
 ];
 
