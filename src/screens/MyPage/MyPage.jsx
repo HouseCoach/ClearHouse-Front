@@ -11,12 +11,12 @@ const MY_PAGE_MAIN_FEATURE = [
   {
     icon: require('../../../assets/MyPage/inquiry-icon.png'),
     title: '문의한 방',
-    link: '',
+    link: 'InquiredHouse',
   },
   {
     icon: require('../../../assets/MyPage/review-icon.png'),
     title: '내가 쓴 리뷰',
-    link: '',
+    link: 'InquiredHouse',
   },
 ];
 

@@ -20,7 +20,7 @@ export default function TopBar({ children, imgSource }) {
         style={styles.backIconWrapper}
       >
         <Image
-          source={require('../../../assets/Login/back-icon.png')}
+          source={require('../../../assets/Bar/back-icon.png')}
           style={styles.backIconStyle}
           resizeMode="contain"
         />
