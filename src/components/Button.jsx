@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnStyle: {
-    width: '80%',
+    width: '100%',
     height: 60,
     backgroundColor: 'rgba(18,41,164,1)',
     alignItems: 'center',

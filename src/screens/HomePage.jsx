@@ -70,13 +70,6 @@ export default function HomePage({ navigation }) {
             />
             <Text style={styles.logoTitleStyle}>투명한 집터</Text>
           </View>
-          <Pressable onPress={() => navigation.goBack()}>
-            <Image
-              source={require('../../assets/home/profile.png')}
-              style={styles.profileIconStyle}
-              resizeMode="contain"
-            />
-          </Pressable>
         </View>
         <View style={styles.homeGridContainer}>
           {HOME_GRID.map((item, idx) => (

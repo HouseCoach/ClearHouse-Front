@@ -9,8 +9,8 @@ const BAR_ICON = [
   },
   {
     icon: require('../../../assets/Bar/map-icon.png'),
-    selectedIcon: require('../../../assets/Bar/map-icon.png'),
-    link: ['HomeMain'],
+    selectedIcon: require('../../../assets/Bar/selected-map-icon.png'),
+    link: ['PropertyMapTab'],
   },
   {
     icon: require('../../../assets/Bar/chat-icon.png'),
@@ -20,7 +20,7 @@ const BAR_ICON = [
   {
     icon: require('../../../assets/home/profile.png'),
     selectedIcon: require('../../../assets/Bar/selected-person-icon.png'),
-    link: ['MyPageMain', 'FavoriteHouseList', 'InquiredHouse'],
+    link: ['MyPage', 'FavoriteHouseList', 'InquiredHouse'],
   },
 ];
 
