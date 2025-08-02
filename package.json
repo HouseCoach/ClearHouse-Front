@@ -9,12 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-navigation/bottom-tabs": "^7.4.2",
     "@react-navigation/native": "^7.1.14",
     "@react-navigation/native-stack": "^7.3.21",
     "expo": "53.0.20",
     "expo-dev-client": "~5.2.4",
     "expo-status-bar": "~2.2.3",
+    "prop-types": "^15.8.1",
     "react": "19.0.0",
     "react-native": "0.79.5",
     "react-native-safe-area-context": "5.4.0",
@@ -24,6 +26,46 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "expo-doctor": "^1.13.5"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "react-native/react-native": true,
+      "es6": true,
+      "node": true,
+      "jest": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "babelOptions": {
+        "presets": [
+          "module:metro-react-native-babel-preset"
+        ]
+      }
+    },
+    "plugins": [
+      "react",
+      "react-native"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:react-native/all"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "react-native/no-raw-text": "error",
+      "react-native/sort-styles": "off",
+      "sort-keys": "off"
+    }
   },
   "private": true
 }

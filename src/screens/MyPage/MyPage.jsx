@@ -34,6 +34,7 @@ const MY_PAGE_SUB_FEATURE = [
     link: '',
   },
 ];
+
 export default function MyPage() {
   const navigation = useNavigation();
   return (

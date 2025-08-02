@@ -161,5 +161,6 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     flex: 1,
+    paddingHorizontal: '10%',
   },
 });
